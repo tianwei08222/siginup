@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">      
+   <servlet>
+	    <servlet-name>signup</servlet-name>
+	    <servlet-class>cn.jsu.SignUpServlet</servlet-class>
+	    <init-param>  
+	       <param-name>driverName</param-name>  
+	       <param-value>com.mysql.jdbc.Driver</param-value>      
+	    </init-param>  
+	    <init-param>  
+	        <param-name>username</param-name>  
+	        <param-value>out</param-value>  
+	    </init-param>  
+	    <init-param>  
+	        <param-name>password</param-name>  
+	        <param-value>123456</param-value>  
+	    </init-param>  
+	    <init-param>  
+	        <param-name>dbName</param-name>  
+	        <param-value>jdbc:mysql://120.78.162.102:3306/jol</param-value>  
+	    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>signup</servlet-name>
+    <url-pattern>/signup</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>check</servlet-name>
+	<servlet-class>cn.jsu.CheckServlet</servlet-class>
+	<init-param>  
+       <param-name>driverName</param-name>  
+       <param-value>com.mysql.jdbc.Driver</param-value>      
+    </init-param>  
+    <init-param>  
+        <param-name>name</param-name>  
+        <param-value>out</param-value>  
+    </init-param>  
+    <init-param>  
+        <param-name>password</param-name>  
+        <param-value>123456</param-value>  
+    </init-param>  
+    <init-param>  
+        <param-name>dbName</param-name>  
+        <param-value>jdbc:mysql://120.78.162.102:3306/jol</param-value>  
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>check</servlet-name>
+    <url-pattern>/check</url-pattern>
+  </servlet-mapping>
+  
+</web-app>

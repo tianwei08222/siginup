@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>报名成功</title>
+    <link rel="stylesheet" href="css/myapp.css" type="text/css"/>
+    <link rel="stylesheet" href="css/hoj.css" type="text/css"/>
+    <link rel="stylesheet" href="css/Demo.css" type="text/css"/>
+    <link rel="stylesheet" href="css/reset.min.css" type="text/css"/>
+    <link rel="stylesheet" href="css/style.css" type="text/css"/>
+    <link rel="stylesheet" href="css/success.css" type="text/css"/>
+    <script type="application/javascript">
+        function to(){
+            document.getElementById("container").scrollIntoView();
+        }
+    </script>
+</head>
+<body>
+<header>
+    <div class="container">
+        <h1 style="color: red;">您已成功报名本次比赛，距离比赛开始还有<span id="time" style="color: #FFF;width: 100%;"></span></h1>
+        <a class="btn btn-info" href="http://120.78.162.102/contest.php" title="前去练习">前去练习</a>
+        <a class="btn btn-info" onclick="to()" title="休闲一下">休闲一下</a>
+        <SCRIPT>
+            function _fresh()
+            {
+                var endtime=new Date("December 22, 2018 9:00:00");
+                var nowtime = new Date();
+                var leftsecond=parseInt((endtime.getTime()-nowtime.getTime())/1000);
+                if(leftsecond<0){leftsecond=0;}
+                __d=parseInt(leftsecond/3600/24);
+                __h=parseInt((leftsecond/3600)%24);
+                __m=parseInt((leftsecond/60)%24);
+                __s=parseInt(leftsecond%60);
+                __all = __d+"天"+__h+"小时"+__m+"分"+__s+"秒";
+                document.getElementById("time").innerHTML=__all;
+            }
+            _fresh()
+            setInterval(_fresh,1000);
+        </SCRIPT>
+    </div>
+</header>
+
+<div class="container" id="container">
+    <div class="directions">
+        <p><strong>如何玩：</strong> 使用键盘方向键移动数字方块。相邻的两个方块数字相同，它们可合并成一个！</p>
+    </div>
+    <div class="scores">
+        <div class="score-container best-score">
+            最佳:
+            <div class="score">
+                <div id="bestScore">0</div>
+            </div>
+        </div>
+        <div class="score-container">
+            分数:
+            <div class="score">
+                <div id="score">0</div>
+                <div class="add" id="add"></div>
+            </div>
+        </div>
+    </div>
+    <div class="game">
+        <div id="tile-container" class="tile-container"></div>
+        <div class="end" id="end">游戏结束<div class="monkey">🙈</div><button class="btn not-recommended__item js-restart-btn" id="try-again">再试一次</button></div>
+    </div>
+
+    <div class="not-recommended">
+        <button class="btn not-recommended__item js-restart-btn" id="restart">重新启动游戏</button>
+        <span class="not-recommended__annotation"></span>
+    </div>
+</div>
+
+<script src="js/game.js"></script>
+
+<!-- 页脚 -->
+<footer>
+    <div class="am-footer-miscs center">
+        <p>由
+            <a href="http://www.jsuccw.cn/" title="吉首大学创新创业工作室" target="_blank" class="">吉首大学创新创业工作室</a>提供技术支持</p>
+    </div>
+</footer>
+
+</body>
+</html>

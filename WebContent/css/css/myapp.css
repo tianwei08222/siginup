@@ -1,0 +1,85 @@
+/* 全局设置 */
+.FL{
+    float: left;
+}
+.Clear{
+    clear: both;
+}
+.con_text{
+    font-family: Times New Roman;
+    font-size: 20px;
+    line-height: 24px;
+    height: auto;
+    margin: 0;
+    padding: 0 20px;
+    text-align: left;
+    white-space: normal;
+    width: 100%;
+}
+.tip_info{
+    color: red;
+    font-size: 15px;
+}
+.my_input{
+    width: 300px;
+    height: 30px;
+    border: 1px solid #e0e0e0;
+    border-radius: 16px;
+    background-color: #F8F8F8;
+    padding: 3px 15px 3px 15px;
+    color: #404040;
+    outline: 0px;
+}
+.info {
+    width: 100%;
+    margin: 15px;
+}
+h4.center {
+    width: 380px;
+}
+p.center{
+    width: 380px;
+}
+.center.tip-center{
+    width: 380px;
+}
+.tip_text{
+    width: 100px;
+}
+.btn{
+    color: #fff;
+    background-color: #0e90d2;
+    border-color: #0e90d2;
+    display: inline-block;
+    margin-bottom: 0;
+    padding: .5em 1em;
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.2;
+    text-align: center;
+    white-space: nowrap;
+    background-image: none;
+    border: 2px solid transparent;
+    border-radius: 1000px;
+    cursor: pointer;
+    outline: 0;
+    -webkit-appearance: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-transition: background-color .3s ease-out,border-color .3s ease-out;
+    transition: background-color .3s ease-out,border-color .3s ease-out;
+}
+.submit_btn{
+	margin-left: 15%;
+}
+
+/* 自适应>641 */
+@media only screen and (min-width: 641px) {
+
+}
+/* 自适应<640 */
+@media only screen and (max-width: 640px) {
+
+}

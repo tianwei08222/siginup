@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>比赛须知</title>
+    <link rel="stylesheet" href="css/myapp.css" type="text/css"/>
+    <link rel="stylesheet" href="css/hoj.css" type="text/css"/>
+    <link rel="stylesheet" href="css/Demo.css" type="text/css"/>
+    <link rel="stylesheet" href="css/link.css" type="text/css"/>
+    <script type="application/javascript" src="js/jquery.min.js"></script>
+    <script type="application/javascript" src="js/link.js" charset="UTF-8"></script>
+    <script src="js/school.js" type="text/javascript"></script>
+    <script type="application/javascript">
+        function checkUsername(){
+            // 获得文件框值:
+            var username = document.getElementById("username").value;
+        	if( username=='' ) {
+        		document.getElementById("msg").innerHTML = null;
+        		return ;
+        	}
+            // 1.创建异步交互对象
+            var xhr = createXmlHttp();
+            // 2.设置监听
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState == 4){
+                    if(xhr.status == 200){
+                        document.getElementById("msg").innerHTML = xhr.responseText;
+                    }
+                }
+            };
+            // 3.打开连接
+            xhr.open("POST","check",true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8");
+            // 4.发送
+            xhr.send("username="+username);
+        }
+        function createXmlHttp(){
+            var xmlHttp;
+            try{ // Firefox, Opera 8.0+, Safari
+                xmlHttp=new XMLHttpRequest();
+            } catch (e){
+                try {// Internet Explorer
+                    xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");
+                }  catch (e){
+                    try{
+                        xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+                    } catch (e){}
+                }
+            }
+            return xmlHttp;
+        }
+    </script>
+</head>
+<body>
+
+<!--   填写报名表   -->
+<div class="con">
+    <div class="text-right center">
+        <form action="signup" class="con_text" method="post" onsubmit="return check()">
+            <h4 class="center">填写报名信息</h4>
+            <p class="center tip_info">注意用户名为您注册时填写的登录名</p>
+            <div class="info">
+                <div class="tip_text FL">用户名</div>
+                <div class="input_info FL">
+                    <input type="text" class="my_input" id="username" name="userName" onblur="checkUsername()"/>
+                </div>
+                <span id="msg"></span>
+                <div class="Clear"></div>
+            </div>
+            <div class="info">
+                <div class="tip_text FL">密码</div>
+                <div class="input_info FL">
+                    <input type="password" class="my_input" id="pwd"/>
+                </div>
+                <div class="Clear"></div>
+            </div>
+            <div class="info">
+                <div class="tip_text FL">学校</div>
+                <div class="input_info FL">
+                    <input type="text" class="my_input" id="school-name" name="school" onfocus="pop()"/>
+                    <div id="choose-box-wrapper">
+                        <div id="choose-box">
+                            <div id="choose-box-title">
+                                <span>选择学校</span>
+                            </div>
+                            <div id="choose-a-province">
+                            </div>
+                            <div id="choose-a-school">
+                            </div>
+                            <div id="choose-box-bottom">
+                                <input type="button" onclick="hide()" value="关闭" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="Clear"></div>
+            </div>
+            <div class="info">
+                <div class="tip_text FL">专业</div>
+                <div class="input_info FL">
+                    <input type="text" class="my_input" id="major" name="major"/>
+                </div>
+                <div class="Clear"></div>
+            </div>
+            <div class="center tip-center">
+                <div>发奖信息
+                    <span style="font-size:14px;color: red;">(请填写真实信息)</span>
+                </div>
+            </div>
+            <div class="info">
+                <div class="tip_text FL">收货人姓名</div>
+                <div class="input_info FL">
+                    <input type="text" class="my_input" id="adder-name" name="name"/>
+                </div>
+                <div class="Clear"></div>
+            </div>
+            <div class="info">
+                <div class="tip_text FL">收货地址</div>
+                <div class="input_info FL">
+                    <input type="text" class="my_input" id="adder" name="adderss"/>
+                </div>
+                <div class="Clear"></div>
+            </div>
+            <div class="info">
+                <div class="tip_text FL">联系电话</div>
+                <div class="input_info FL">
+                    <input type="text" class="my_input" id="phone" name="phone"/>
+                </div>
+                <div class="Clear"></div>
+            </div>
+            <div class="info">
+                <input class="btn submit_btn" type="submit" value="确认报名"/>
+                <a class="btn" href="http://120.78.162.102/" title="返回主页">返回主页</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- 页脚 -->
+<footer>
+    <div class="am-footer-miscs center">
+        <p>由
+            <a href="http://www.jsuccw.cn/" title="吉首大学创新创业工作室" target="_blank" class="">吉首大学创新创业工作室</a>提供技术支持</p>
+    </div>
+</footer>
+
+</body>
+
+<script type="application/javascript">
+    /* 鼠标点击特效 */
+    var a_idx = 0;
+    jQuery(document).ready(function($) {
+        $("body").click(function(e) {
+            var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正" ,"法治", "爱国", "敬业", "诚信", "友善");
+            var $i = $("<span/>").text(a[a_idx]);
+            a_idx = (a_idx + 1) % a.length;
+            var x = e.pageX,
+                    y = e.pageY;
+            $i.css({
+                "z-index": 999999999999999999999999999999999999999999999999999999999999999999999,
+                "top": y - 20,
+                "left": x,
+                "position": "absolute",
+                "font-weight": "bold",
+                "color": "#ff6651"
+            });
+            $("body").append($i);
+            $i.animate({
+                        "top": y - 180,
+                        "opacity": 0
+                    },
+                    1500,
+                    function() {
+                        $i.remove();
+                    });
+        });
+    });
+</script>
+
+<script type="application/javascript">
+    function check(){
+        var name = document.getElementById('username').value;
+        if( name=='' ) {
+            alert("用户名不能为空！！");
+            document.getElementById('username').focus();
+            return false;
+        }
+        var pwd = document.getElementById('pwd').value;
+        if( pwd=='' ) {
+            alert("请填写密码！！");
+            document.getElementById('pwd').focus();
+            return false;
+        }
+        var school = document.getElementById('school-name').value;
+        if( school=='' ){
+            alert("请选择学校！！");
+            return false;
+        }
+        var major = document.getElementById('major').value;
+        if( major=='' ) {
+            alert("请填写专业，谢谢配合~~");
+            document.getElementById('major').focus();
+            return false;
+        }
+        var addername = document.getElementById('adder-name').value;
+        if( addername=='' ) {
+            alert("请填写完备的收货信息，以便我们邮寄奖品，谢谢配合~~");
+            document.getElementById('adder-name').focus();
+            return false;
+        }
+        var adderss = document.getElementById('adder').value;
+        if( adderss=='' ){
+            alert("请填写完备的收货信息，以便我们邮寄奖品，谢谢配合~~");
+            document.getElementById('adder').focus();
+            return false;
+        }
+        var phone = document.getElementById('phone').value;
+        if( phone=='') {
+            alert("请填写完备的收货信息，以便我们邮寄奖品，谢谢配合~~");
+            document.getElementById('phone').focus();
+            return false;
+        }
+        var myreg=/^[1][3,4,5,7,8][0-9]{9}$/;
+        if( !myreg.test(phone) ) {
+            alert("请填写正确的电话号码，以便您能准确的收到奖品~~");
+            document.getElementById('phone').focus();
+            return false;
+        }
+        return true;
+    }
+    window.onload = function(){
+        document.getElementById('username').focus();
+    }
+</script>
+
+<script type="text/javascript" src="https://api.lwl12.com/hitokoto/main/get?encode=js&charset=utf-8"></script><div id="lwlhitokoto"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span><script> lwlhitokoto()</script></div>
+
+</html>
